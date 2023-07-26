@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ["react-refresh", "prettier", "simple-import-sort"],
   rules: {
+    "@typescript-eslint/ban-types": "warn",
     "import/extensions": "off",
     "import/no-extraneous-dependencies": [
       "error",
