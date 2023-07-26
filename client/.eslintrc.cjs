@@ -20,18 +20,19 @@ module.exports = {
   plugins: ["react-refresh", "prettier", "simple-import-sort"],
   rules: {
     "import/extensions": "off",
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
     "import/no-extraneous-dependencies": [
       "error",
       {
         devDependencies: ["**/*.test.ts", "**/*.test.tsx", "**/*.config.ts"],
       },
     ],
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/quotes": [2, "double", { avoidEscape: true }],
+    "@typescript-eslint/no-unused-vars": "warn",
     "prettier/prettier": [
       "error",
       {
