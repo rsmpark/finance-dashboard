@@ -2,7 +2,9 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 import DashboardBox from "@/components/DashboardBox";
 
-type Props = {};
+import Row1 from "./Row1";
+import Row2 from "./Row2";
+import Row3 from "./Row3";
 
 const gridTemplateLg = `
 "a b c"
@@ -49,9 +51,8 @@ const gridTemplateSm = `
   "j"
   "j"
 `;
-export default function Dashboard(props: Props) {
+export default function Dashboard() {
   const isAboveMedScreen = useMediaQuery("(min-width: 1200px)");
-  const { palette } = useTheme();
 
   const gridStyleLg = {
     gridTemplateColumns: "maskRepeat(3, minmax(370px, 1fr))",
@@ -72,16 +73,9 @@ export default function Dashboard(props: Props) {
       gap="1.5rem"
       sx={isAboveMedScreen ? gridStyleLg : gridStyleSm}
     >
-      <DashboardBox gridArea="a" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="b" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="c" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="d" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="e" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="f" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="g" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="h" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="i" bgcolor="#fff"></DashboardBox>
-      <DashboardBox gridArea="j" bgcolor="#fff"></DashboardBox>
+      <Row1 />
+      <Row2 />
+      <Row3 />
     </Box>
   );
 }
