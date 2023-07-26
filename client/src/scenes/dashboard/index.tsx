@@ -1,7 +1,10 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+
+import DashboardBox from "@/components/DashboardBox";
+
 type Props = {};
 
-const gridTemplate = `
+const gridTemplateLg = `
 "a b c"
 "a b c"
 "a b c"
@@ -14,8 +17,52 @@ const gridTemplate = `
 "g h j"
 `;
 
+const gridTemplateSm = `
+  "a"
+  "a"
+  "a"
+  "a"
+  "b"
+  "b"
+  "b"
+  "b"
+  "c"
+  "c"
+  "c"
+  "d"
+  "d"
+  "d"
+  "e"
+  "e"
+  "f"
+  "f"
+  "f"
+  "g"
+  "g"
+  "g"
+  "h"
+  "h"
+  "h"
+  "h"
+  "i"
+  "i"
+  "j"
+  "j"
+`;
 export default function Dashboard(props: Props) {
+  const isAboveMedScreen = useMediaQuery("(min-width: 1200px)");
   const { palette } = useTheme();
+
+  const gridStyleLg = {
+    gridTemplateColumns: "maskRepeat(3, minmax(370px, 1fr))",
+    gridTemplateRows: "repeat(10, minxmax(60px, 1fr))",
+    gridTemplateAreas: gridTemplateLg,
+  };
+  const gridStyleSm = {
+    gridAutoColumns: "1fr",
+    gridAutoRows: "80px",
+    gridTemplateAreas: gridTemplateSm,
+  };
 
   return (
     <Box
@@ -23,22 +70,18 @@ export default function Dashboard(props: Props) {
       height="100%"
       display="grid"
       gap="1.5rem"
-      sx={{
-        gridTemplateColumns: "maskRepeat(3, minmax(370px, 1fr))",
-        gridTemplateRows: "repeat(10, minxmax(60px, 1fr))",
-        gridTemplateAreas: gridTemplate,
-      }}
+      sx={isAboveMedScreen ? gridStyleLg : gridStyleSm}
     >
-      <Box gridArea="a" bgcolor="#fff"></Box>
-      <Box gridArea="b" bgcolor="#fff"></Box>
-      <Box gridArea="c" bgcolor="#fff"></Box>
-      <Box gridArea="d" bgcolor="#fff"></Box>
-      <Box gridArea="e" bgcolor="#fff"></Box>
-      <Box gridArea="f" bgcolor="#fff"></Box>
-      <Box gridArea="g" bgcolor="#fff"></Box>
-      <Box gridArea="h" bgcolor="#fff"></Box>
-      <Box gridArea="i" bgcolor="#fff"></Box>
-      <Box gridArea="j" bgcolor="#fff"></Box>
+      <DashboardBox gridArea="a" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="b" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="c" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="d" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="e" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="f" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="g" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="h" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="i" bgcolor="#fff"></DashboardBox>
+      <DashboardBox gridArea="j" bgcolor="#fff"></DashboardBox>
     </Box>
   );
 }
